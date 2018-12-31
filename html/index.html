@@ -3,12 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <title>测试</title>
+    <style>
+        #wrap > .inner {
+            font-size: 26px;
+        }
+
+        .wrap #first + div {
+            font-size: 26px;
+            color: red;
+        }
+
+        .wrap #second ~ div {
+           color:red
+        }
+
+        div [name]{
+            border-bottom:1px solid red ;
+
+        }
+        div [name="div2"]{
+
+            border-left:1px solid red ;
+        }
+        div [name~="div2"]{
+
+            border-right:1px solid blue ;
+        }
+        div [class|="item"]{
+            border-right:1px solid blue ;
+        }
+        div [class^="test"]{
+            border-right:1px solid blue ;
+        }
+
+        div [class$="test"]{
+            border-right:1px solid yellow ;
+        }
+
+        div [class*="test"]{
+            font-size:26px;
+            color:red;
+        }
+
+
+    </style>
 </head>
 <body>
 <div>
     <p>11</p>
     <p>11</p>
     <p>122</p>
+
+    <h2>子元素选择器 ></h2>
+
+    <div id="wrap">
+        <div class="inner">111</div>
+        <div class="inner">111</div>
+        <div class="">111</div>
+        <div class="">
+            <div class="inner">111</div>
+        </div>
+    </div>
+
+    <h2>相邻兄弟选择器 +</h2>
+
+    <div class="wrap">
+        <div id="first">11</div>
+        <div>22</div>
+        <div>333</div>
+    </div>
+
+    <h2>通用兄弟选择器 ~</h2>
+
+    <div class="wrap">
+        <div id="second">11</div>
+        <div>22</div>
+        <div>32<div>test</div>32</div>
+    </div>
+
+    <h1>属性选择器</h1>
+    <div>
+        <div name="div1">1</div>
+        <div name="div2">2</div>
+        <div name="div3">3</div>
+        <div name="div4 div2">3</div>
+    </div>
+
+    <h2>字串值选择器</h2>
+    <h3>|本身 和 本身-XXX</h3>
+    <div>
+        <div class="item">test</div>
+        <div class="item">test</div>
+        <div class="item-3">test</div>
+    </div>
+
+    <h3>^value值开头包含本身</h3>
+    <div>
+        <div class="test1">test</div>
+        <div class="test2">test</div>
+        <div class="test3">test</div>
+    </div>
+
+    <h3>$value值结尾包含本身</h3>
+    <div>
+        <div class="test">test</div>
+        <div class="twotest">test</div>
+        <div class="threetest">test</div>
+    </div>
+
+    <h3>* 所有含有的value的值</h3>
+    <div>
+        <div class="test">test</div>
+        <div class="twotest">test</div>
+        <div class="threetest">test</div>
+    </div>
+
 </div>
 </body>
 </html>
